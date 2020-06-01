@@ -17,8 +17,6 @@ export default function() {
   check(res, {
     "is status 200": (r) => r.status === 200
   });
-  if (res.status === 200) {
-    uptosCount.add(JSON.parse(res.body).count);
-  }
+  uptosCount.add(JSON.parse(res.body).count);
   sleep(1);
 }

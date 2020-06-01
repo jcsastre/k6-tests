@@ -12,13 +12,11 @@ function getRandomFloat(min, max) {
 export default function() {
   let lat = 41.388729386919316 + getRandomFloat(-0.0015, 0.0015);
   let lng = 2.168776574948045 + getRandomFloat(-0.0015, 0.0015);
-  let radiusInKm = 1;
-  let res = http.get(`http://localhost:8080/uptos?lat=${lat}&lng=${lng}&radiusInKm=${radiusInKm}`);
+  let radiusInKm = 1
+  let res = http.get(`http://localhost:8080/uptos?lat=${lat}&lng=${lng}&radiusInKm=1`);
   check(res, {
     "is status 200": (r) => r.status === 200
   });
-  if (res.status === 200) {
-    uptosCount.add(JSON.parse(res.body).count);
-  }
+  uptosCount.add(JSON.parse(res.body).count);
   sleep(1);
 }
