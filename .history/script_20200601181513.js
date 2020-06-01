@@ -5,14 +5,9 @@ import { check } from "k6";
 
 let uptosCount = new Trend('uptos_count');
 
-function getRandomFloat(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
 export default function() {
-  let lat = 41.388729386919316 + getRandomFloat(-0.0015, 0.0015);
-  let lng = 2.168776574948045 + getRandomFloat(-0.0015, 0.0015);
-  let res = http.get(`http://localhost:8080/uptos?lat=${lat}&lng=${lng}&radiusInKm=1`);
+  let lat = 41.388729386919316 + Math.random() * (max - min) + min
+  let res = http.get('http://localhost:8080/uptos?lat=41.388729386919316&lng=2.168776574948045&radiusInKm=1');
   check(res, {
     "is status 200": (r) => r.status === 200
   });
